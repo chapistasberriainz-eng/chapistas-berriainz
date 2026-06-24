@@ -126,8 +126,10 @@ body {
    ============================================ */
 
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23404040" stroke-width="0.5"/></pattern></defs><rect width="1200" height="600" fill="%231a1a1a"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/fondo-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 600px;
     display: flex;
     align-items: center;
