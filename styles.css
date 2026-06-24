@@ -5,8 +5,8 @@
 :root {
     --primary-color: #1a1a1a;      /* Gris oscuro principal */
     --secondary-color: #2d2d2d;    /* Gris oscuro secundario */
-    --accent-color: #ff6b35;       /* Naranja/Rojo acento */
-    --accent-light: #ff8c5a;       /* Naranja claro */
+    --accent-color: #d4af37;       /* Naranja/Rojo acento */
+    --accent-light: #d4af37       /* Naranja claro */
     --text-light: #e0e0e0;         /* Texto claro */
     --text-dark: #ffffff;          /* Texto blanco */
     --border-color: #404040;       /* Color de bordes */
