@@ -695,3 +695,8 @@ section {
         padding: 2rem 0;
     }
 }
+   .logo-img{
+       height:80px;
+       width:auto;
+       display:block;
+}
