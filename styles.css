@@ -592,6 +592,75 @@ section {
 .footer p {
     margin: 0.5rem 0;
 }
+/* ============================================
+   FONDOS PARA TARJETAS DE SERVICIOS
+   ============================================ */
+
+
+.servicio-card {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Capa oscura encima de la foto */
+.servicio-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+}
+
+
+/* Texto encima de la imagen */
+.servicio-card i,
+.servicio-card h3,
+.servicio-card p {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Imágenes */
+.chapa {
+    background-image: url('images/chapa.jpg');
+}
+
+.pintura {
+    background-image: url('images/pintura.jpg');
+}
+
+.pulido {
+    background-image: url('images/pulido.jpg');
+}
+
+.superficies {
+    background-image: url('images/superficies.jpg');
+}
+
+.color {
+    background-image: url('images/color.jpg');
+}
+
+.mantenimiento {
+    background-image: url('images/mantenimiento.jpg');
+}
+
+
+/* efecto al pasar el ratón */
+.servicio-card:hover {
+    transform: translateY(-10px);
+    background-position:center;
+}
 
 /* ============================================
    RESPONSIVE DESIGN
