@@ -726,11 +726,13 @@ section {
     gap: 1rem;
     border-radius: 10px;
     overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .foto-lado {
     position: relative;
-    height: 300px;
+    height: 180px;
     overflow: hidden;
 }
 
@@ -762,6 +764,10 @@ section {
     color: var(--accent-color);
     font-size: 1.4rem;
     margin: 2.5rem 0 1.5rem;
+}
+
+.proceso-trabajo {
+    background-color: var(--secondary-color);
 }
 
 .videos-grid {
@@ -811,12 +817,8 @@ section {
    ============================================ */
 
 @media (max-width: 768px) {
-    .antes-despues-fotos {
-        grid-template-columns: 1fr;
-    }
-
     .foto-lado {
-        height: 220px;
+        height: 120px;
     }
 
     .videos-grid {
