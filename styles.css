@@ -6,7 +6,7 @@
     --primary-color: #1a1a1a;      /* Gris oscuro principal */
     --secondary-color: #2d2d2d;    /* Gris oscuro secundario */
     --accent-color: #d4af37;       /* Naranja/Rojo acento */
-    --accent-light: #d4af37       /* Naranja claro */
+    --accent-light: #d4af37;      /* Naranja claro */
     --text-light: #e0e0e0;         /* Texto claro */
     --text-dark: #ffffff;          /* Texto blanco */
     --border-color: #404040;       /* Color de bordes */
@@ -702,29 +702,73 @@ section {
 }
 
 /* ============================================
-   VÍDEO INSTAGRAM DESTACADO
+   HERO - FONDO FOTO
    ============================================ */
 
-.video-destacado {
-    background-color: var(--primary-color);
-    padding: 4rem 0;
-}
-
-.video-instagram-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/fondo-hero.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 }
 
 /* ============================================
-   VÍDEOS MP4 EN GALERÍA
+   ANTES / DESPUÉS
    ============================================ */
+
+.antes-despues-item {
+    margin-bottom: 3rem;
+}
+
+.antes-despues-fotos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.foto-lado {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.foto-lado img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.foto-lado .label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0,0,0,0.7);
+    padding: 0.4rem 0.9rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   VÍDEOS MP4
+   ============================================ */
+
+.subtitulo-galeria {
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1.5rem;
+}
 
 .videos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .video-item {
@@ -747,7 +791,34 @@ section {
     display: block;
 }
 
+/* ============================================
+   INSTAGRAM AL FINAL
+   ============================================ */
+
+.video-instagram-section {
+    background-color: var(--secondary-color);
+    padding: 4rem 0;
+}
+
+.video-instagram-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 768px) {
+    .antes-despues-fotos {
+        grid-template-columns: 1fr;
+    }
+
+    .foto-lado {
+        height: 220px;
+    }
+
     .videos-grid {
         grid-template-columns: 1fr;
     }
