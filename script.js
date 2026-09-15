@@ -66,6 +66,7 @@ function setupGaleriaServicios() {
     // Agregar click listeners a las tarjetas de servicio
     const tarjetasServicios = document.querySelectorAll('[data-servicio]');
     tarjetasServicios.forEach(tarjeta => {
+        tarjeta.style.cursor = 'pointer';
         tarjeta.addEventListener('click', function(e) {
             const servicio = this.getAttribute('data-servicio');
             abrirGaleriaServicio(servicio);
