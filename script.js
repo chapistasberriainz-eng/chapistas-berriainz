@@ -63,18 +63,17 @@ let fotoActualIndex = 0;
 let servicioActual = '';
 
 function setupGaleriaServicios() {
-    // Agregar click listeners a los botones de servicio
-    const botonesServicios = document.querySelectorAll('.ver-fotos-btn');
-    botonesServicios.forEach(boton => {
-        boton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const servicio = this.closest('.servicio-card').getAttribute('data-servicio');
+    // Agregar click listeners a las tarjetas de servicio
+    const tarjetasServicios = document.querySelectorAll('[data-servicio]');
+    tarjetasServicios.forEach(tarjeta => {
+        tarjeta.addEventListener('click', function(e) {
+            const servicio = this.getAttribute('data-servicio');
             abrirGaleriaServicio(servicio);
         });
     });
 
     // Cerrar modal
-    const cerrarBtn = document.querySelector('.cerrar');
+    const cerrarBtn = document.querySelector('.cerrar-galeria');
     const modal = document.getElementById('modal-galeria');
     
     if (cerrarBtn) {
@@ -91,8 +90,8 @@ function setupGaleriaServicios() {
     }
 
     // Botones de navegación
-    const prevBtn = document.getElementById('prev-foto');
-    const nextBtn = document.getElementById('next-foto');
+    const prevBtn = document.querySelector('.prev-foto');
+    const nextBtn = document.querySelector('.next-foto');
     
     if (prevBtn) prevBtn.addEventListener('click', fotoAnterior);
     if (nextBtn) nextBtn.addEventListener('click', fotoSiguiente);
@@ -113,7 +112,7 @@ function abrirGaleriaServicio(servicio) {
     fotoActualIndex = 0;
     
     const modal = document.getElementById('modal-galeria');
-    const titulo = document.getElementById('modal-titulo');
+    const titulo = document.getElementById('modal-titulo-servicio');
     
     if (!fotosServicios[servicio]) {
         console.error('Servicio no encontrado:', servicio);
@@ -520,6 +519,114 @@ style.textContent = `
         .modal-btn {
             padding: 0.8rem;
             font-size: 0.9rem;
+        }
+    }
+
+    /* Estilos para modal de galería de servicios */
+    .modal-galeria {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        animation: fadeIn 0.3s ease;
+    }
+
+    .modal-galeria-content {
+        position: relative;
+        background-color: #1a1a1a;
+        margin: 5% auto;
+        padding: 2rem;
+        border: 2px solid #ff6b35;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 800px;
+        text-align: center;
+        animation: slideDown 0.3s ease;
+    }
+
+    .cerrar-galeria {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        color: #aaa;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .cerrar-galeria:hover {
+        color: #ff6b35;
+    }
+
+    #modal-titulo-servicio {
+        color: #ff6b35;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    .galeria-fotos-servicio {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        max-width: 100%;
+    }
+
+    #foto-actual {
+        max-width: 100%;
+        max-height: 500px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+    }
+
+    .nav-foto {
+        background-color: rgba(255, 107, 53, 0.2);
+        border: 2px solid #ff6b35;
+        color: #ff6b35;
+        padding: 0.8rem 1rem;
+        font-size: 1.3rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-foto:hover {
+        background-color: #ff6b35;
+        color: white;
+        transform: scale(1.1);
+    }
+
+    .foto-contador-servicio {
+        text-align: center;
+        color: #e0e0e0;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .modal-galeria-content {
+            padding: 1.5rem;
+            margin: 20% auto;
+        }
+
+        #foto-actual {
+            max-height: 300px;
+        }
+
+        .nav-foto {
+            padding: 0.6rem 0.8rem;
+            font-size: 1rem;
+        }
+
+        #modal-titulo-servicio {
+            font-size: 1.3rem;
         }
     }
 `;
