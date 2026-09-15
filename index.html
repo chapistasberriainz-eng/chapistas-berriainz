@@ -43,45 +43,72 @@
             <h2 class="section-title">Nuestros Servicios</h2>
             <div class="servicios-grid">
 
-                <div class="servicio-card chapa">
+                <div class="servicio-card chapa" data-servicio="chapa">
                      <i class="fas fa-hammer"></i>
                     <h3>Reparación de Chapa</h3>
                     <p>Reparación de daños, abolladuras y deformaciones en la carrocería</p>
+                    <button class="ver-fotos-btn">Ver Fotos</button>
                 </div>
 
-                <div class="servicio-card pintura">
+                <div class="servicio-card pintura" data-servicio="pintura">
                     <i class="fas fa-paint-brush"></i>
                     <h3>Pintura Automotriz</h3>
                     <p>Pintura de alta calidad con acabado profesional</p>
+                    <button class="ver-fotos-btn">Ver Fotos</button>
                 </div>
 
-                <div class="servicio-card pulido">
+                <div class="servicio-card pulido" data-servicio="pulido">
                     <i class="fas fa-sparkles"></i>
                     <h3>Pulido y Abrillantado</h3>
                     <p>Pulido profesional para recuperar el brillo original</p>
+                    <button class="ver-fotos-btn">Ver Fotos</button>
                 </div>
 
-                <div class="servicio-card superficies">
+                <div class="servicio-card superficies" data-servicio="express">
                     <i class="fas fa-car"></i>
                     <h3>Servicio Express</h3>
                     <p>Priorizamos tu vehículo y lo entregamos en el día</p>
+                    <button class="ver-fotos-btn">Ver Fotos</button>
                 </div>
 
-                <div class="servicio-card color">
+                <div class="servicio-card color" data-servicio="color">
                     <i class="fas fa-palette"></i>
                     <h3>Cambio de Color</h3>
                     <p>Personalización y cambio de color de tu vehículo</p>
+                    <button class="ver-fotos-btn">Ver Fotos</button>
                 </div>
 
-                <div class="servicio-card mantenimiento">
+                <div class="servicio-card mantenimiento" data-servicio="mantenimiento">
                     <i class="fas fa-tools"></i>
                     <h3>Mantenimiento</h3>
                     <p>Servicios de mantenimiento y cuidado de pintura</p>
+                    <button class="ver-fotos-btn">Ver Fotos</button>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- Modal Galería de Servicios -->
+    <div id="modal-galeria" class="modal-galeria">
+        <div class="modal-content">
+            <span class="cerrar">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <div class="galeria-fotos">
+                <div class="foto-navegacion">
+                    <button class="prev-foto" id="prev-foto"><i class="fas fa-chevron-left"></i></button>
+                    <img id="foto-actual" src="" alt="Foto del servicio">
+                    <button class="next-foto" id="next-foto"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="foto-contador">
+                    <span id="contador-fotos"></span>
+                </div>
+                <div id="thumbnails" class="thumbnails">
+                    <!-- Se llenan dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Proceso de Trabajo (Vídeos) -->
     <section id="proceso" class="proceso-trabajo">
@@ -179,7 +206,7 @@
     <section class="mapa">
         <div class="container">
             <h2 class="section-title">Encuéntranos</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.1234567890!2d-1.695!3d42.826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd508d5fd0e20add%3A0xf5a30896aea4f579!2sPolígono%20Industrial%20de%20Berriainz!5e0!3m2!1ses!2ses!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.1234567890!2d-1.695!3d42.826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd508d5fd0e20add%3A0xf5a30896ae[...]
         </div>
     </section>
 
@@ -260,7 +287,7 @@
                 <blockquote class="instagram-media"
                     data-instgrm-permalink="https://www.instagram.com/chapistasberriainz/"
                     data-instgrm-version="14"
-                    style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0 auto; max-width:540px; padding:0; width:100%;">
+                    style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0 auto; max-width:540px; padding:0; width:100%[...]
                 </blockquote>
                 <script async src="//www.instagram.com/embed.js"></script>
             </div>
