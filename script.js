@@ -6,7 +6,163 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMobileMenu();
     setupFormSubmission();
     setupScrollAnimations();
+    setupGaleriaServicios();
 });
+
+/* ============================================
+   GALERÍA DE SERVICIOS
+   ============================================ */
+
+// Base de datos de fotos por servicio
+const fotosServicios = {
+    chapa: {
+        nombre: 'Reparación de Chapa',
+        fotos: [
+            'images/chapas-antes.jpg',
+            'images/chapas-despues.jpg'
+        ]
+    },
+    pintura: {
+        nombre: 'Pintura Automotriz',
+        fotos: [
+            'images/color-antes.jpg',
+            'images/color-despues.jpg'
+        ]
+    },
+    pulido: {
+        nombre: 'Pulido y Abrillantado',
+        fotos: [
+            'images/chapas-antes.jpg',
+            'images/chapas-despues.jpg'
+        ]
+    },
+    express: {
+        nombre: 'Servicio Express',
+        fotos: [
+            'images/color-antes.jpg',
+            'images/color-despues.jpg'
+        ]
+    },
+    color: {
+        nombre: 'Cambio de Color',
+        fotos: [
+            'images/color-antes.jpg',
+            'images/color-despues.jpg'
+        ]
+    },
+    mantenimiento: {
+        nombre: 'Mantenimiento',
+        fotos: [
+            'images/chapas-antes.jpg',
+            'images/chapas-despues.jpg'
+        ]
+    }
+};
+
+let fotoActualIndex = 0;
+let servicioActual = '';
+
+function setupGaleriaServicios() {
+    // Agregar click listeners a los botones de servicio
+    const botonesServicios = document.querySelectorAll('.ver-fotos-btn');
+    botonesServicios.forEach(boton => {
+        boton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const servicio = this.closest('.servicio-card').getAttribute('data-servicio');
+            abrirGaleriaServicio(servicio);
+        });
+    });
+
+    // Cerrar modal
+    const cerrarBtn = document.querySelector('.cerrar');
+    const modal = document.getElementById('modal-galeria');
+    
+    if (cerrarBtn) {
+        cerrarBtn.addEventListener('click', cerrarGaleriaServicio);
+    }
+
+    // Cerrar al hacer clic fuera del modal
+    if (modal) {
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                cerrarGaleriaServicio();
+            }
+        });
+    }
+
+    // Botones de navegación
+    const prevBtn = document.getElementById('prev-foto');
+    const nextBtn = document.getElementById('next-foto');
+    
+    if (prevBtn) prevBtn.addEventListener('click', fotoAnterior);
+    if (nextBtn) nextBtn.addEventListener('click', fotoSiguiente);
+
+    // Navegación por teclado
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('modal-galeria');
+        if (modal && modal.style.display === 'block') {
+            if (e.key === 'ArrowLeft') fotoAnterior();
+            if (e.key === 'ArrowRight') fotoSiguiente();
+            if (e.key === 'Escape') cerrarGaleriaServicio();
+        }
+    });
+}
+
+function abrirGaleriaServicio(servicio) {
+    servicioActual = servicio;
+    fotoActualIndex = 0;
+    
+    const modal = document.getElementById('modal-galeria');
+    const titulo = document.getElementById('modal-titulo');
+    
+    if (!fotosServicios[servicio]) {
+        console.error('Servicio no encontrado:', servicio);
+        return;
+    }
+
+    const datos = fotosServicios[servicio];
+    titulo.textContent = datos.nombre;
+    
+    mostrarFoto(0);
+    if (modal) modal.style.display = 'block';
+}
+
+function cerrarGaleriaServicio() {
+    const modal = document.getElementById('modal-galeria');
+    if (modal) modal.style.display = 'none';
+}
+
+function fotoAnterior() {
+    const datos = fotosServicios[servicioActual];
+    if (!datos) return;
+    
+    fotoActualIndex = (fotoActualIndex - 1 + datos.fotos.length) % datos.fotos.length;
+    mostrarFoto(fotoActualIndex);
+}
+
+function fotoSiguiente() {
+    const datos = fotosServicios[servicioActual];
+    if (!datos) return;
+    
+    fotoActualIndex = (fotoActualIndex + 1) % datos.fotos.length;
+    mostrarFoto(fotoActualIndex);
+}
+
+function mostrarFoto(index) {
+    const datos = fotosServicios[servicioActual];
+    if (!datos || !datos.fotos[index]) return;
+    
+    const imgElement = document.getElementById('foto-actual');
+    const contadorElement = document.getElementById('contador-fotos');
+    
+    if (imgElement) {
+        imgElement.src = datos.fotos[index];
+    }
+    
+    if (contadorElement) {
+        contadorElement.textContent = `${index + 1} / ${datos.fotos.length}`;
+    }
+}
 
 /* ============================================
    MENÚ MÓVIL
