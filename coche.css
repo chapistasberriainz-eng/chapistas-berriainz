@@ -138,3 +138,17 @@
     .servicios-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; }
     .servicio-card { padding: 1.1rem 0.75rem 1rem; }
 }
+
+/* ==========================================================
+   GALERÍA: oculta en la página principal.
+   Aparece cuando alguien pulsa "Galería" en el menú superior
+   (o entra con el enlace ...#galeria) y desaparece al ir a otra sección.
+   ========================================================== */
+.galeria:not(:target) {
+    display: none;
+}
+
+/* que el menú fijo no tape el título al saltar a una sección */
+section[id] {
+    scroll-margin-top: 110px;
+}
