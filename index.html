@@ -14,7 +14,6 @@
     <meta property="og:image" content="https://chapistasberriainz-eng.github.io/chapistas-berriainz/images/LOGO.jpg">
     <meta property="og:locale" content="es_ES">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="servicios-coche.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
     {
@@ -221,7 +220,7 @@
     <section class="mapa">
         <div class="container">
             <h2 class="section-title">Encuéntranos</h2>
-            <iframe title="Mapa de la ubicación de Chapistas Berriainz" src="https://www.google.com/maps?q=Berrioplano%20Navarra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe title="Mapa de la ubicación de Chapistas Berriainz" src="https://www.google.com/maps?q=Pol%C3%ADgono%20Industrial%20de%20Berriainz%2C%20Calle%20E%2C%2031195%20Berrioplano%2C%20Navarra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
@@ -229,12 +228,10 @@
         <div class="container">
             <h2 class="section-title">Síguenos en Instagram</h2>
             <div class="video-instagram-wrapper">
-                <blockquote class="instagram-media"
-                    data-instgrm-permalink="https://www.instagram.com/chapistasberriainz/"
-                    data-instgrm-version="14"
-                    style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0 auto; max-width:540px; padding:0; width:100%;">
-                </blockquote>
-                <script async src="//www.instagram.com/embed.js"></script>
+                <a class="instagram-btn" href="https://www.instagram.com/chapistasberriainz/" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span>@chapistasberriainz</span>
+                </a>
             </div>
         </div>
     </section>
@@ -270,14 +267,19 @@
                         <span class="label">DESPUÉS</span>
                     </div>
                 </div>
+                <div class="antes-despues-fotos solo-video">
+                    <div class="foto-lado foto-vertical">
+                        <video controls muted loop playsinline preload="metadata" src="images/pintar.mp4#t=0.1" aria-label="Proceso de pintura de un vehículo"></video>
+                        <span class="label">PINTURA</span>
+                    </div>
+                </div>
                 <p class="trabajo-titulo">Pintura y Cambio de Color</p>
             </div>
 
-            <!-- TODO: sustituye estas fotos por las de preparación y acabado cuando las tengas -->
             <div class="antes-despues-item" id="trabajo-preparacion">
-                <div class="antes-despues-fotos">
-                    <div class="foto-lado">
-                        <img src="images/chapas-antes.jpg" alt="Preparación de la carrocería antes de pintar" loading="lazy">
+                <div class="antes-despues-fotos solo-video">
+                    <div class="foto-lado foto-vertical">
+                        <video controls muted loop playsinline preload="metadata" src="images/preparar.mp4#t=0.1" aria-label="Preparación de la carrocería antes de pintar"></video>
                         <span class="label">PREPARACIÓN</span>
                     </div>
                 </div>
@@ -285,9 +287,9 @@
             </div>
 
             <div class="antes-despues-item" id="trabajo-acabado">
-                <div class="antes-despues-fotos">
-                    <div class="foto-lado">
-                        <img src="images/color-despues.jpg" alt="Acabado final con pulido y brillo" loading="lazy">
+                <div class="antes-despues-fotos solo-video">
+                    <div class="foto-lado foto-vertical">
+                        <video controls muted loop playsinline preload="metadata" src="images/acabado-pintura.mp4#t=0.1" aria-label="Acabado final de pintura y brillo"></video>
                         <span class="label">ACABADO</span>
                     </div>
                 </div>
