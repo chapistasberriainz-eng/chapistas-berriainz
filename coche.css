@@ -152,3 +152,95 @@
 section[id] {
     scroll-margin-top: 110px;
 }
+
+/* ==========================================================
+   TEMA CLARO (opción C): blanco roto cálido + carbón + dorado
+   Para cambiar los colores, edita SOLO estas variables.
+   ========================================================== */
+:root {
+    --primary-color: #faf7f2;     /* fondo principal (blanco roto) */
+    --secondary-color: #efe9de;   /* fondo secundario (beige claro) */
+    --text-light: #5a554d;        /* texto normal */
+    --text-dark: #2a2723;         /* títulos */
+    --border-color: #e0d8c9;      /* bordes */
+    --head: #2d2a26;              /* cabecera y pie (oscuros, por el logo) */
+    --ink: #2a2723;
+    --ink2: #5a554d;
+    --line: #e0d8c9;
+}
+
+body { background: var(--primary-color); }
+
+/* secciones más transparentes para que el coche se siga viendo sobre fondo claro */
+.servicios,
+.proceso-trabajo,
+.mapa,
+.video-instagram-section {
+    background-color: rgba(239, 233, 222, 0.5);
+    background-color: color-mix(in srgb, var(--secondary-color) 50%, transparent);
+}
+
+.galeria,
+.contacto,
+.faq {
+    background-color: rgba(250, 247, 242, 0.5);
+    background-color: color-mix(in srgb, var(--primary-color) 50%, transparent);
+}
+
+/* cabecera y pie oscuros */
+.navbar { background-color: var(--head); }
+.nav-links a { color: #e8e8e8; }
+.nav-links a:hover { color: #d4af37; }
+.hamburger span { background: #d4af37; }
+.footer { background-color: var(--head); color: #cfcfcf; }
+.footer p { color: #cfcfcf; }
+
+/* portada: texto blanco sobre la foto */
+.hero-content,
+.hero-content h1,
+.hero-content p,
+.hero h1,
+.hero p { color: #fff; }
+
+/* títulos y textos */
+.section-title { color: var(--ink); }
+.section-subtitle { color: var(--ink2); }
+.trabajo-titulo { color: var(--ink); }
+
+/* tarjetas de servicios */
+.servicios-grid .servicio-card {
+    background-color: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 18px rgba(42, 39, 35, 0.08);
+}
+.servicio-card::before { background: none; }
+.servicio-card h3 { color: var(--ink); }
+.servicio-card p { color: var(--ink2); opacity: 1; }
+.servicio-card i { color: #b8921f; background: rgba(212, 175, 55, 0.14); }
+.servicio-card:hover { box-shadow: 0 10px 24px rgba(184, 146, 31, 0.22); }
+
+/* vídeos, galería, contacto */
+.video-item,
+.galeria-item { background-color: #fff; border: 1px solid var(--line); }
+.contacto-form,
+.contacto-info { background-color: #fff; border: 1px solid var(--line); }
+.contacto-info h3,
+.contacto-form label { color: var(--ink); }
+.contacto-metodo { background-color: var(--primary-color); color: var(--ink); border: 1px solid var(--line); }
+.horario-info,
+.horario-info p { color: var(--ink2); }
+.contacto input,
+.contacto select,
+.contacto textarea { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+.faq-list details { border: 1px solid var(--line); }
+
+/* menú desplegable del móvil */
+@media (max-width: 768px) {
+    .nav-links { background-color: var(--head); }
+}
+
+/* retoques del tema claro */
+.section-subtitle { color: var(--ink); }
+.car-part:not([data-part="base"]) {
+    filter: drop-shadow(0 8px 12px rgba(42, 39, 35, 0.28));
+}
