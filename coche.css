@@ -3,6 +3,10 @@
    Coche de fondo que se desmonta al hacer scroll.
    No cambia el diseño: solo hace translúcidos los fondos de
    las secciones para que el coche se vea por detrás.
+
+   Los COLORES de fondo se cambian en styles.css, arriba del todo:
+       --primary-color   (fondo principal)
+       --secondary-color (fondo secundario)
    ========================================================== */
 
 /* Capa fija detrás de todo el contenido (z-index -1) */
@@ -39,19 +43,22 @@
     filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.45));
 }
 
-/* Secciones: mismo color de siempre, pero algo translúcido para ver el coche */
+/* Secciones: usan los colores de styles.css, algo translúcidos para ver el coche.
+   (la primera línea es un respaldo para navegadores muy antiguos) */
 .servicios,
 .proceso-trabajo,
 .mapa,
 .video-instagram-section,
 .footer {
     background-color: rgba(45, 45, 45, 0.62);
+    background-color: color-mix(in srgb, var(--secondary-color) 62%, transparent);
 }
 
 .galeria,
 .contacto,
 .faq {
     background-color: rgba(26, 26, 26, 0.62);
+    background-color: color-mix(in srgb, var(--primary-color) 62%, transparent);
 }
 
 @media (max-width: 700px) {
@@ -60,4 +67,74 @@
 
 @media (prefers-reduced-motion: reduce) {
     .car-part { will-change: auto; }
+}
+
+/* ==========================================================
+   SERVICIOS: una sola línea, tarjetas pequeñas y más estéticas
+   (el texto de cada servicio no se toca)
+   ========================================================== */
+.servicios-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-top: 2rem;
+}
+
+.servicio-card {
+    min-height: 0;
+    padding: 1.3rem 0.9rem 1.2rem;
+    border-width: 1px;
+    border-radius: 14px;
+    justify-content: flex-start;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* capa sobre la foto/color: más suave que antes */
+.servicio-card::before {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.servicio-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 24px rgba(212, 175, 55, 0.22);
+}
+
+/* icono dentro de un círculo dorado suave */
+.servicio-card i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.14);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+}
+
+.servicio-card h3 {
+    font-size: 0.98rem;
+    margin-bottom: 0.45rem;
+}
+
+.servicio-card p {
+    font-size: 0.76rem;
+    line-height: 1.5;
+    opacity: 0.88;
+}
+
+/* "fa-sparkles" no existe en la versión gratuita de Font Awesome: usamos otro icono */
+.servicio-card.pulido i::before {
+    content: "\e2ca";
+}
+
+@media (max-width: 1000px) {
+    .servicios-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .servicios-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; }
+    .servicio-card { padding: 1.1rem 0.75rem 1rem; }
 }
