@@ -14,6 +14,7 @@
     <meta property="og:image" content="https://chapistasberriainz-eng.github.io/chapistas-berriainz/images/LOGO.jpg">
     <meta property="og:locale" content="es_ES">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="servicios-coche.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
     {
@@ -44,21 +45,6 @@
     </script>
 </head>
 <body>
-    <div class="scroll-car-scene" aria-hidden="true">
-        <div class="car-scene">
-            <div class="car-shell">
-                <span class="car-panel panel-front"></span>
-                <span class="car-panel panel-roof"></span>
-                <span class="car-panel panel-rear"></span>
-                <span class="car-panel panel-side"></span>
-                <span class="car-window window-front"></span>
-                <span class="car-window window-back"></span>
-                <span class="car-wheel wheel-front"></span>
-                <span class="car-wheel wheel-back"></span>
-            </div>
-        </div>
-    </div>
-
     <nav class="navbar">
         <div class="container">
             <div class="LOGO" style="margin-right: auto;">
@@ -79,6 +65,22 @@
     </nav>
 
     <section id="home" class="hero">
+        <!-- Coche: capa independiente DENTRO del hero (no toca el fondo general) -->
+        <div class="scroll-car-scene" aria-hidden="true">
+            <div class="car-scene">
+                <div class="car-shell">
+                    <span class="car-panel panel-front"></span>
+                    <span class="car-panel panel-roof"></span>
+                    <span class="car-panel panel-rear"></span>
+                    <span class="car-panel panel-side"></span>
+                    <span class="car-window window-front"></span>
+                    <span class="car-window window-back"></span>
+                    <span class="car-wheel wheel-front"></span>
+                    <span class="car-wheel wheel-back"></span>
+                </div>
+            </div>
+        </div>
+
         <div class="hero-content">
             <h1>Taller de chapa y pintura en Berriainz, Pamplona</h1>
             <p>Taller de coches especializado en chapa y pintura. Reparamos golpes, choques y accidentes con profesionalidad y calidad. Estamos en el Polígono Industrial de Berriainz.</p>
@@ -90,37 +92,28 @@
         <div class="container">
             <h2 class="section-title">Nuestros Servicios de Chapa y Pintura</h2>
             <div class="servicios-grid">
-                <div class="servicio-card chapa" data-servicio="chapa" tabindex="0" role="button" aria-label="Ver trabajos de reparación de chapa">
-                    <i class="fas fa-hammer"></i>
-                    <h3>Reparación de Chapa</h3>
-                    <p>Abolladuras y golpes.</p>
-                </div>
-                <div class="servicio-card pintura" data-servicio="pintura" tabindex="0" role="button" aria-label="Ver trabajos de pintura automotriz">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>Pintura Automotriz</h3>
-                    <p>Acabados profesionales.</p>
-                </div>
-                <div class="servicio-card pulido" data-servicio="pulido" tabindex="0" role="button" aria-label="Ver trabajos de pulido y abrillantado">
-                    <i class="fas fa-sparkles"></i>
-                    <h3>Pulido</h3>
-                    <p>Brillo y restauración.</p>
-                </div>
-                <div class="servicio-card express" data-servicio="express" tabindex="0" role="button" aria-label="Ver trabajos de servicio express">
-                    <i class="fas fa-car"></i>
-                    <h3>Servicio Express</h3>
-                    <p>Entrega rápida.</p>
-                </div>
-                <div class="servicio-card color" data-servicio="color" tabindex="0" role="button" aria-label="Ver trabajos de cambio de color">
-                    <i class="fas fa-palette"></i>
-                    <h3>Cambio de Color</h3>
-                    <p>Personalización.</p>
-                </div>
-                <div class="servicio-card mantenimiento" data-servicio="mantenimiento" tabindex="0" role="button" aria-label="Ver trabajos de mantenimiento">
-                    <i class="fas fa-tools"></i>
-                    <h3>Mantenimiento</h3>
-                    <p>Retoques y cuidado.</p>
-                </div>
+                <a href="#trabajo-chapas" class="servicio-link s-chapas">
+                    <i class="fas fa-hammer" aria-hidden="true"></i>
+                    <h3>Chapa</h3>
+                    <p>Abolladuras y golpes</p>
+                </a>
+                <a href="#trabajo-pintura" class="servicio-link s-pintura">
+                    <i class="fas fa-paint-brush" aria-hidden="true"></i>
+                    <h3>Pintura</h3>
+                    <p>Y cambio de color</p>
+                </a>
+                <a href="#trabajo-preparacion" class="servicio-link s-preparacion">
+                    <i class="fas fa-tools" aria-hidden="true"></i>
+                    <h3>Preparación</h3>
+                    <p>Lijado e imprimación</p>
+                </a>
+                <a href="#trabajo-acabado" class="servicio-link s-acabado">
+                    <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    <h3>Acabado</h3>
+                    <p>Pulido y brillo</p>
+                </a>
             </div>
+            <p class="servicios-extra">También servicio express (entrega en el día) y mantenimiento de pintura.</p>
         </div>
     </section>
 
@@ -246,12 +239,13 @@
         </div>
     </section>
 
-    <section id="galeria" class="galeria hidden-gallery">
+    <!-- Galería visible: cada tarjeta de servicio enlaza a un bloque (id) de aquí -->
+    <section id="galeria" class="galeria">
         <div class="container">
             <h2 class="section-title">Galería de Trabajos</h2>
             <p class="section-subtitle">Antes y Después de nuestras intervenciones</p>
 
-            <div class="antes-despues-item">
+            <div class="antes-despues-item" id="trabajo-chapas">
                 <div class="antes-despues-fotos">
                     <div class="foto-lado">
                         <img src="images/chapas-antes.jpg" alt="Antes de la reparación de chapa en Chapistas Berriainz" loading="lazy">
@@ -262,10 +256,10 @@
                         <span class="label">DESPUÉS</span>
                     </div>
                 </div>
-                <p class="trabajo-titulo">Reparación de Chapa y Pintura</p>
+                <p class="trabajo-titulo">Reparación de Chapa</p>
             </div>
 
-            <div class="antes-despues-item">
+            <div class="antes-despues-item" id="trabajo-pintura">
                 <div class="antes-despues-fotos">
                     <div class="foto-lado">
                         <img src="images/color-antes.jpg" alt="Antes del cambio de color de un coche" loading="lazy">
@@ -276,7 +270,28 @@
                         <span class="label">DESPUÉS</span>
                     </div>
                 </div>
-                <p class="trabajo-titulo">Cambio de Color</p>
+                <p class="trabajo-titulo">Pintura y Cambio de Color</p>
+            </div>
+
+            <!-- TODO: sustituye estas fotos por las de preparación y acabado cuando las tengas -->
+            <div class="antes-despues-item" id="trabajo-preparacion">
+                <div class="antes-despues-fotos">
+                    <div class="foto-lado">
+                        <img src="images/chapas-antes.jpg" alt="Preparación de la carrocería antes de pintar" loading="lazy">
+                        <span class="label">PREPARACIÓN</span>
+                    </div>
+                </div>
+                <p class="trabajo-titulo">Preparación: lijado e imprimación</p>
+            </div>
+
+            <div class="antes-despues-item" id="trabajo-acabado">
+                <div class="antes-despues-fotos">
+                    <div class="foto-lado">
+                        <img src="images/color-despues.jpg" alt="Acabado final con pulido y brillo" loading="lazy">
+                        <span class="label">ACABADO</span>
+                    </div>
+                </div>
+                <p class="trabajo-titulo">Acabado: pulido y brillo</p>
             </div>
         </div>
     </section>
@@ -313,6 +328,7 @@
         </div>
     </footer>
 
+    <!-- Se mantiene el modal para no romper script.js (ya no se abre desde servicios) -->
     <div id="modal-galeria" class="modal-galeria" aria-modal="true" role="dialog">
         <div class="modal-galeria-content">
             <button class="cerrar-galeria" type="button" aria-label="Cerrar galería">×</button>
@@ -327,5 +343,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="scroll-car.js"></script>
 </body>
 </html>
