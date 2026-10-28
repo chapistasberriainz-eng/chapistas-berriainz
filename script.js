@@ -1,136 +1,32 @@
-const fotosServicios = {
-    chapa: {
-        nombre: 'Reparación de Chapa',
-        fotos: ['images/chapas-antes.jpg', 'images/chapas-despues.jpg']
-    },
-    pintura: {
-        nombre: 'Pintura Automotriz',
-        fotos: ['images/color-antes.jpg', 'images/color-despues.jpg']
-    },
-    pulido: {
-        nombre: 'Pulido y Abrillantado',
-        fotos: ['images/chapas-despues.jpg', 'images/color-despues.jpg']
-    },
-    express: {
-        nombre: 'Servicio Express',
-        fotos: ['images/pintura.jpg', 'images/chapa.jpg']
-    },
-    color: {
-        nombre: 'Cambio de Color',
-        fotos: ['images/color-antes.jpg', 'images/color-despues.jpg']
-    },
-    mantenimiento: {
-        nombre: 'Mantenimiento',
-        fotos: ['images/mantenimiento.jpg', 'images/pulido.jpg']
-    }
-};
-
-let fotoActualIndex = 0;
-let servicioActual = '';
+/* script.js - Chapistas Berriainz
+   Menú móvil + formulario por WhatsApp.
+   (El coche con scroll vive ahora en scroll-car.js y los servicios
+   enlazan directamente a la galería, así que ya no hace falta
+   el modal, la galería oculta ni el coche aquí.) */
 
 function setupMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', function () {
-            navLinks.classList.toggle('active');
-        });
+    if (!hamburger || !navLinks) return;
 
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
-        });
-    }
-}
+    const toggle = () => navLinks.classList.toggle('active');
 
-function setupGaleriaServicios() {
-    document.querySelectorAll('[data-servicio]').forEach(tarjeta => {
-        tarjeta.style.cursor = 'pointer';
-        tarjeta.addEventListener('click', function () {
-            abrirGaleriaServicio(this.getAttribute('data-servicio'));
-        });
-        tarjeta.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                abrirGaleriaServicio(this.getAttribute('data-servicio'));
-            }
-        });
-    });
-
-    const cerrarBtn = document.querySelector('.cerrar-galeria');
-    const modal = document.getElementById('modal-galeria');
-    if (cerrarBtn) cerrarBtn.addEventListener('click', cerrarGaleriaServicio);
-    if (modal) {
-        window.addEventListener('click', function (e) {
-            if (e.target === modal) cerrarGaleriaServicio();
-        });
-    }
-
-    const prevBtn = document.querySelector('.prev-foto');
-    const nextBtn = document.querySelector('.next-foto');
-    if (prevBtn) prevBtn.addEventListener('click', fotoAnterior);
-    if (nextBtn) nextBtn.addEventListener('click', fotoSiguiente);
-
-    document.addEventListener('keydown', function (e) {
-        const modalActual = document.getElementById('modal-galeria');
-        if (modalActual && modalActual.classList.contains('open')) {
-            if (e.key === 'ArrowLeft') fotoAnterior();
-            if (e.key === 'ArrowRight') fotoSiguiente();
-            if (e.key === 'Escape') cerrarGaleriaServicio();
+    hamburger.addEventListener('click', toggle);
+    hamburger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
         }
     });
-}
 
-function abrirGaleriaServicio(servicio) {
-    servicioActual = servicio;
-    fotoActualIndex = 0;
-
-    const modal = document.getElementById('modal-galeria');
-    const titulo = document.getElementById('modal-titulo-servicio');
-
-    if (!fotosServicios[servicio]) {
-        console.error('Servicio no encontrado:', servicio);
-        return;
-    }
-
-    titulo.textContent = fotosServicios[servicio].nombre;
-    mostrarFoto(0);
-    if (modal) modal.classList.add('open');
-}
-
-function cerrarGaleriaServicio() {
-    const modal = document.getElementById('modal-galeria');
-    if (modal) modal.classList.remove('open');
-}
-
-function fotoAnterior() {
-    const datos = fotosServicios[servicioActual];
-    if (!datos) return;
-    fotoActualIndex = (fotoActualIndex - 1 + datos.fotos.length) % datos.fotos.length;
-    mostrarFoto(fotoActualIndex);
-}
-
-function fotoSiguiente() {
-    const datos = fotosServicios[servicioActual];
-    if (!datos) return;
-    fotoActualIndex = (fotoActualIndex + 1) % datos.fotos.length;
-    mostrarFoto(fotoActualIndex);
-}
-
-function mostrarFoto(index) {
-    const datos = fotosServicios[servicioActual];
-    if (!datos || !datos.fotos[index]) return;
-
-    const imgElement = document.getElementById('foto-actual');
-    const contadorElement = document.getElementById('contador-fotos');
-
-    if (imgElement) imgElement.src = datos.fotos[index];
-    if (contadorElement) contadorElement.textContent = `${index + 1} / ${datos.fotos.length}`;
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
 }
 
 function setupFormSubmission() {
     const formulario = document.getElementById('formularioContacto');
-
     if (!formulario) return;
 
     formulario.addEventListener('submit', function (e) {
@@ -151,46 +47,7 @@ function setupFormSubmission() {
     });
 }
 
-function setupGalleryLinkBehavior() {
-    const gallerySection = document.getElementById('galeria');
-    const galleryLinks = document.querySelectorAll('a[href="#galeria"]');
-
-    if (!gallerySection || galleryLinks.length === 0) return;
-
-    gallerySection.classList.add('hidden-gallery');
-    galleryLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            gallerySection.classList.remove('hidden-gallery');
-            gallerySection.classList.add('visible');
-            setTimeout(() => gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-        });
-    });
-}
-
-function setupCarScrollBackground() {
-    const scene = document.querySelector('.scroll-car-scene');
-    if (!scene) return;
-
-    const update = () => {
-        const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-        const progress = Math.min(window.scrollY / maxScroll, 1);
-
-        document.documentElement.style.setProperty('--car-shift', `${-220 + progress * 440}px`);
-        document.documentElement.style.setProperty('--car-scale', (0.7 + progress * 0.7).toFixed(3));
-        document.documentElement.style.setProperty('--car-y', `${50 - progress * 120}px`);
-        document.documentElement.style.setProperty('--car-open', `${progress * 120}px`);
-        scene.style.opacity = (0.08 + progress * 0.7).toFixed(3);
-    };
-
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     setupMobileMenu();
-    setupGalleryLinkBehavior();
     setupFormSubmission();
-    setupGaleriaServicios();
-    setupCarScrollBackground();
 });
