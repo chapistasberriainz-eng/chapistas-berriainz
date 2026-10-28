@@ -32,36 +32,27 @@ function setupMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function () {
             navLinks.classList.toggle('active');
         });
-    }
 
-    if (navLinks) {
-        const links = navLinks.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
     }
 }
 
 function setupGaleriaServicios() {
-    const tarjetasServicios = document.querySelectorAll('[data-servicio]');
-    tarjetasServicios.forEach(tarjeta => {
+    document.querySelectorAll('[data-servicio]').forEach(tarjeta => {
         tarjeta.style.cursor = 'pointer';
-        tarjeta.addEventListener('click', function() {
-            const servicio = this.getAttribute('data-servicio');
-            abrirGaleriaServicio(servicio);
+        tarjeta.addEventListener('click', function () {
+            abrirGaleriaServicio(this.getAttribute('data-servicio'));
         });
-
-        tarjeta.addEventListener('keydown', function(e) {
+        tarjeta.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const servicio = this.getAttribute('data-servicio');
-                abrirGaleriaServicio(servicio);
+                abrirGaleriaServicio(this.getAttribute('data-servicio'));
             }
         });
     });
@@ -70,10 +61,8 @@ function setupGaleriaServicios() {
     const modal = document.getElementById('modal-galeria');
     if (cerrarBtn) cerrarBtn.addEventListener('click', cerrarGaleriaServicio);
     if (modal) {
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                cerrarGaleriaServicio();
-            }
+        window.addEventListener('click', function (e) {
+            if (e.target === modal) cerrarGaleriaServicio();
         });
     }
 
@@ -82,7 +71,7 @@ function setupGaleriaServicios() {
     if (prevBtn) prevBtn.addEventListener('click', fotoAnterior);
     if (nextBtn) nextBtn.addEventListener('click', fotoSiguiente);
 
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         const modalActual = document.getElementById('modal-galeria');
         if (modalActual && modalActual.classList.contains('open')) {
             if (e.key === 'ArrowLeft') fotoAnterior();
@@ -104,9 +93,7 @@ function abrirGaleriaServicio(servicio) {
         return;
     }
 
-    const datos = fotosServicios[servicio];
-    titulo.textContent = datos.nombre;
-
+    titulo.textContent = fotosServicios[servicio].nombre;
     mostrarFoto(0);
     if (modal) modal.classList.add('open');
 }
@@ -119,7 +106,6 @@ function cerrarGaleriaServicio() {
 function fotoAnterior() {
     const datos = fotosServicios[servicioActual];
     if (!datos) return;
-
     fotoActualIndex = (fotoActualIndex - 1 + datos.fotos.length) % datos.fotos.length;
     mostrarFoto(fotoActualIndex);
 }
@@ -127,7 +113,6 @@ function fotoAnterior() {
 function fotoSiguiente() {
     const datos = fotosServicios[servicioActual];
     if (!datos) return;
-
     fotoActualIndex = (fotoActualIndex + 1) % datos.fotos.length;
     mostrarFoto(fotoActualIndex);
 }
@@ -146,24 +131,24 @@ function mostrarFoto(index) {
 function setupFormSubmission() {
     const formulario = document.getElementById('formularioContacto');
 
-    if (formulario) {
-        formulario.addEventListener('submit', function(e) {
-            e.preventDefault();
+    if (!formulario) return;
 
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const telefono = document.getElementById('telefono').value.trim();
-            const vehiculo = document.getElementById('vehiculo').value.trim();
-            const servicio = document.getElementById('servicio').value;
-            const mensaje = document.getElementById('mensaje').value.trim();
+    formulario.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-            const mensajeWhatsApp = `Hola CHAPISTAS BERRIANZ,\n\nMe gustaría solicitar un presupuesto con los siguientes datos:\n\n*Datos Personales:*\n- Nombre: ${nombre}\n- Email: ${email}\n- Teléfono: ${telefono}\n\n*Información del Vehículo:*\n- Modelo: ${vehiculo}\n- Servicio: ${servicio}\n\n*Descripción del Trabajo:*\n${mensaje}`;
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const vehiculo = document.getElementById('vehiculo').value.trim();
+        const servicio = document.getElementById('servicio').value;
+        const mensaje = document.getElementById('mensaje').value.trim();
 
-            const urlWhatsApp = `https://wa.me/34636693893?text=${encodeURIComponent(mensajeWhatsApp)}`;
-            window.open(urlWhatsApp, '_blank');
-            formulario.reset();
-        });
-    }
+        const mensajeWhatsApp = `Hola CHAPISTAS BERRIANZ,\n\nMe gustaría solicitar un presupuesto con los siguientes datos:\n\n*Datos Personales:*\n- Nombre: ${nombre}\n- Email: ${email}\n- Teléfono: ${telefono}\n\n*Información del Vehículo:*\n- Modelo: ${vehiculo}\n- Servicio: ${servicio}\n\n*Descripción del Trabajo:*\n${mensaje}\n\nEspero respuesta pronto.\n\nGracias.`;
+
+        const urlWhatsApp = `https://wa.me/34636693893?text=${encodeURIComponent(mensajeWhatsApp)}`;
+        window.open(urlWhatsApp, '_blank');
+        formulario.reset();
+    });
 }
 
 function setupGalleryLinkBehavior() {
@@ -173,15 +158,12 @@ function setupGalleryLinkBehavior() {
     if (!gallerySection || galleryLinks.length === 0) return;
 
     gallerySection.classList.add('hidden-gallery');
-
     galleryLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             gallerySection.classList.remove('hidden-gallery');
             gallerySection.classList.add('visible');
-            setTimeout(() => {
-                gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
+            setTimeout(() => gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
         });
     });
 }
@@ -191,20 +173,21 @@ function setupCarScrollBackground() {
     if (!scene) return;
 
     const update = () => {
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
+        const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+        const progress = Math.min(window.scrollY / maxScroll, 1);
 
-        document.documentElement.style.setProperty('--car-shift', `${-240 + progress * 480}px`);
-        document.documentElement.style.setProperty('--car-scale', (0.68 + progress * 0.62).toFixed(3));
-        document.documentElement.style.setProperty('--car-y', `${60 - progress * 110}px`);
-        scene.style.opacity = (0.08 + progress * 0.72).toFixed(3);
+        document.documentElement.style.setProperty('--car-shift', `${-220 + progress * 440}px`);
+        document.documentElement.style.setProperty('--car-scale', (0.7 + progress * 0.7).toFixed(3));
+        document.documentElement.style.setProperty('--car-y', `${50 - progress * 120}px`);
+        document.documentElement.style.setProperty('--car-open', `${progress * 120}px`);
+        scene.style.opacity = (0.08 + progress * 0.7).toFixed(3);
     };
 
     update();
     window.addEventListener('scroll', update, { passive: true });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     setupMobileMenu();
     setupGalleryLinkBehavior();
     setupFormSubmission();
