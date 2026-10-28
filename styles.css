@@ -1,16 +1,15 @@
-/* ============================================
-   VARIABLES Y ESTILOS GLOBALES
-   ============================================ */
-
 :root {
-    --primary-color: #1a1a1a;      /* Gris oscuro principal */
-    --secondary-color: #2d2d2d;    /* Gris oscuro secundario */
-    --accent-color: #d4af37;       /* Naranja/Rojo acento */
-    --accent-light: #d4af37;      /* Naranja claro */
-    --text-light: #e0e0e0;         /* Texto claro */
-    --text-dark: #ffffff;          /* Texto blanco */
-    --border-color: #404040;       /* Color de bordes */
-    --success-color: #4caf50;      /* Color de éxito */
+    --primary-color: #1a1a1a;
+    --secondary-color: #2d2d2d;
+    --accent-color: #d4af37;
+    --accent-light: #d4af37;
+    --text-light: #e0e0e0;
+    --text-dark: #ffffff;
+    --border-color: #404040;
+    --success-color: #4caf50;
+    --car-shift: 0px;
+    --car-scale: 1;
+    --car-y: 0px;
 }
 
 * {
@@ -28,6 +27,13 @@ body {
     background-color: var(--primary-color);
     color: var(--text-light);
     line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 .container {
@@ -36,12 +42,8 @@ body {
     padding: 0 20px;
 }
 
-/* ============================================
-   NAVEGACIÓN
-   ============================================ */
-
 .navbar {
-    background-color: var(--secondary-color);
+    background-color: rgba(29, 29, 29, 0.96);
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -54,23 +56,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    flex: 1;
-}
-
-.logo h1 {
-    color: var(--accent-color);
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.logo .tagline {
-    color: var(--text-light);
-    font-size: 0.8rem;
-    margin-top: 2px;
 }
 
 .nav-links {
@@ -111,6 +96,8 @@ body {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    background: transparent;
+    border: none;
 }
 
 .hamburger span {
@@ -121,13 +108,9 @@ body {
     transition: all 0.3s ease;
 }
 
-/* ============================================
-   HERO SECTION
-   ============================================ */
-
 .hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23404040" stroke-width="0.5"/></pattern></defs><rect width="1200" height="600" fill="%231a1a1a"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(212,175,55,0.08)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(0,0,0,0.25)"/><rect width="1200" height="600" fill="url(%23grid)" /></svg>');
     min-height: 600px;
     display: flex;
     align-items: center;
@@ -135,6 +118,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
 }
 
 .hero::before {
@@ -165,10 +149,12 @@ body {
     position: relative;
     z-index: 2;
     color: var(--text-dark);
+    max-width: 900px;
+    padding: 0 20px;
 }
 
-.hero-content h2 {
-    font-size: 3.5rem;
+.hero-content h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
     font-weight: bold;
     margin-bottom: 1rem;
     color: var(--accent-color);
@@ -208,10 +194,6 @@ body {
     50% { transform: translateY(20px); }
 }
 
-/* ============================================
-   SECCIONES GENERALES
-   ============================================ */
-
 section {
     padding: 4rem 0;
 }
@@ -245,29 +227,42 @@ section {
     margin-bottom: 2rem;
 }
 
-/* ============================================
-   SERVICIOS
-   ============================================ */
-
 .servicios {
     background-color: var(--secondary-color);
 }
 
 .servicios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(6, minmax(150px, 1fr));
+    gap: 1rem;
     margin-top: 3rem;
 }
 
 .servicio-card {
     background-color: var(--primary-color);
-    padding: 2rem;
+    padding: 1.3rem 0.8rem;
     border-radius: 10px;
     text-align: center;
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
     cursor: pointer;
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.servicio-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
 }
 
 .servicio-card:hover {
@@ -276,80 +271,77 @@ section {
     box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
 }
 
+.servicio-card i,
+.servicio-card h3,
+.servicio-card p {
+    position: relative;
+    z-index: 2;
+}
+
 .servicio-card i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--accent-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .servicio-card h3 {
     color: var(--text-dark);
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
 }
 
 .servicio-card p {
     color: var(--text-light);
-    line-height: 1.8;
+    line-height: 1.5;
+    font-size: 0.8rem;
 }
 
-/* ============================================
-   GALERÍA
-   ============================================ */
+.chapa { background-image: url('images/chapa.jpg'); }
+.pintura { background-image: url('images/pintura.jpg'); }
+.pulido { background-image: url('images/pulido.jpg'); }
+.express { background-image: url('images/superficies.jpg'); }
+.color { background-image: url('images/color.jpg'); }
+.mantenimiento { background-image: url('images/mantenimiento.jpg'); }
 
 .galeria {
     background-color: var(--primary-color);
 }
 
-.galeria-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+.hidden-gallery {
+    display: none;
 }
 
-.galeria-item {
-    background-color: var(--secondary-color);
+.hidden-gallery.visible {
+    display: block;
+}
+
+.antes-despues-item {
+    margin-bottom: 3rem;
+}
+
+.antes-despues-fotos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
     border-radius: 10px;
     overflow: hidden;
-    border: 2px solid var(--border-color);
-    transition: all 0.3s ease;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.galeria-item:hover {
-    transform: scale(1.05);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-}
-
-.before-after {
+.foto-lado {
     position: relative;
-    width: 25%;
-    height: 75px;
+    height: 240px;
     overflow: hidden;
 }
 
-.before, .after {
-    position: absolute;
-    width: 25%;
-    height: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.before {
-    left: 0;
-}
-
-.after {
-    right: 0;
-}
-
-.before img, .after img {
-    width: 25%;
-    height: 25%;
+.foto-lado img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .label {
@@ -363,12 +355,8 @@ section {
     font-size: 0.9rem;
 }
 
-.before .label {
+.foto-lado .label {
     left: 10px;
-}
-
-.after .label {
-    right: 10px;
 }
 
 .trabajo-titulo {
@@ -378,9 +366,37 @@ section {
     font-weight: bold;
 }
 
-/* ============================================
-   INFORMACIÓN DE EMPRESA
-   ============================================ */
+.proceso-trabajo {
+    background-color: var(--secondary-color);
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.video-item {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.video-item:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.video-item video {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
 
 .info-empresa {
     background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
@@ -419,10 +435,6 @@ section {
     line-height: 1.8;
 }
 
-/* ============================================
-   MAPA
-   ============================================ */
-
 .mapa {
     background-color: var(--secondary-color);
     padding: 3rem 0;
@@ -431,11 +443,10 @@ section {
 .mapa iframe {
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    min-height: 420px;
+    border: 0;
 }
-
-/* ============================================
-   FORMULARIO DE CONTACTO
-   ============================================ */
 
 .contacto {
     background-color: var(--primary-color);
@@ -448,7 +459,8 @@ section {
     margin-top: 2rem;
 }
 
-.contacto-form {
+.contacto-form,
+.contacto-info {
     background-color: var(--secondary-color);
     padding: 2rem;
     border-radius: 10px;
@@ -505,13 +517,6 @@ section {
     color: var(--accent-color);
 }
 
-.contacto-info {
-    background-color: var(--secondary-color);
-    padding: 2rem;
-    border-radius: 10px;
-    border: 2px solid var(--border-color);
-}
-
 .contacto-info h3 {
     color: var(--accent-color);
     font-size: 1.5rem;
@@ -547,18 +552,6 @@ section {
     color: var(--accent-color);
 }
 
-.contacto-metodo.email:hover {
-    color: var(--accent-color);
-}
-
-.contacto-metodo.whatsapp:hover {
-    color: #25d366;
-}
-
-.contacto-metodo span {
-    flex: 1;
-}
-
 .horario-info {
     display: flex;
     gap: 1rem;
@@ -577,10 +570,6 @@ section {
     font-size: 0.95rem;
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
-
 .footer {
     background-color: var(--secondary-color);
     padding: 2rem 0;
@@ -592,92 +581,214 @@ section {
 .footer p {
     margin: 0.5rem 0;
 }
-/* ============================================
-   FONDOS PARA TARJETAS DE SERVICIOS
-   ============================================ */
 
-
-.servicio-card {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 260px;
-    position: relative;
-    overflow: hidden;
-
+.scroll-car-scene {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.08;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    overflow: hidden;
 }
 
+.car-scene {
+    position: relative;
+    width: min(88vw, 900px);
+    height: 220px;
+    transform: translate3d(var(--car-shift), var(--car-y), 0) scale(var(--car-scale));
+    transition: transform 0.15s linear;
+    filter: drop-shadow(0 18px 16px rgba(0, 0, 0, 0.32));
+}
 
-/* Capa oscura encima de la foto */
-.servicio-card::before {
+.car-body {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    width: 72%;
+    height: 96px;
+    background: linear-gradient(90deg, #cfd5de 0%, #a8b2bf 15%, #eef3f9 50%, #a6afbc 100%);
+    border: 3px solid rgba(0, 0, 0, 0.35);
+    border-radius: 42px 38px 18px 20px;
+    transform: translateX(-50%);
+}
+
+.car-body::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
+    left: 18%;
+    top: -28px;
+    width: 36%;
+    height: 52px;
+    background: linear-gradient(180deg, #edf3f8, #aab2bf);
+    border-radius: 20px 16px 8px 10px;
+    border: 3px solid rgba(0, 0, 0, 0.3);
 }
 
+.car-body::after {
+    content: "";
+    position: absolute;
+    right: 12%;
+    bottom: 18px;
+    width: 18%;
+    height: 22px;
+    border-radius: 10px;
+    background: rgba(255, 180, 0, 0.92);
+    box-shadow: -26px 0 0 rgba(255, 180, 0, 0.75);
+}
 
-/* Texto encima de la imagen */
-.servicio-card i,
-.servicio-card h3,
-.servicio-card p {
+.car-window {
+    position: absolute;
+    left: 18%;
+    top: -22px;
+    width: 24%;
+    height: 46px;
+    background: rgba(20, 30, 48, 0.8);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 12px 8px 8px 12px;
+}
+
+.car-light {
+    position: absolute;
+    right: 10%;
+    bottom: 16px;
+    width: 18px;
+    height: 18px;
+    background: #ffc857;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(255, 200, 87, 0.8);
+}
+
+.wheel {
+    position: absolute;
+    bottom: -18px;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #4b4b4b 0 12%, #111 13% 55%, #232323 56% 100%);
+    border: 4px solid rgba(0, 0, 0, 0.5);
+}
+
+.wheel-front { left: 18%; }
+.wheel-back { right: 18%; }
+
+.modal-galeria {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-galeria.open {
+    display: flex;
+}
+
+.modal-galeria-content {
     position: relative;
-    z-index: 2;
+    background-color: #1a1a1a;
+    margin: 5% auto;
+    padding: 2rem;
+    border: 2px solid #ff6b35;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    animation: slideDown 0.3s ease;
 }
 
-
-/* Imágenes */
-.chapa {
-    background-image: url('images/chapa.jpg');
+.cerrar-galeria {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #aaa;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: transparent;
+    border: none;
 }
 
-.pintura {
-    background-image: url('images/pintura.jpg');
+.cerrar-galeria:hover {
+    color: #ff6b35;
 }
 
-.pulido {
-    background-image: url('images/pulido.jpg');
+#modal-titulo-servicio {
+    color: #ff6b35;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
 }
 
-.superficies {
-    background-image: url('images/superficies.jpg');
+.galeria-fotos-servicio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    max-width: 100%;
 }
 
-.color {
-    background-image: url('images/color.jpg');
+#foto-actual {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
 }
 
-.mantenimiento {
-    background-image: url('images/mantenimiento.jpg');
+.nav-foto {
+    background-color: rgba(255, 107, 53, 0.2);
+    border: 2px solid #ff6b35;
+    color: #ff6b35;
+    padding: 0.8rem 1rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
-
-/* efecto al pasar el ratón */
-.servicio-card:hover {
-    transform: translateY(-10px);
-    background-position:center;
+.nav-foto:hover {
+    background-color: #ff6b35;
+    color: white;
+    transform: scale(1.1);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+.foto-contador-servicio {
+    text-align: center;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
         font-size: 0.9rem;
-    }
-
-    .logo h1 {
-        font-size: 1.1rem;
-    }
-
-    .hero-content h2 {
-        font-size: 2rem;
     }
 
     .hero-content p {
@@ -701,10 +812,21 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .hero::before,
-    .hero::after {
-        width: 300px;
-        height: 300px;
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .foto-lado {
+        height: 120px;
+    }
+
+    .modal-galeria-content {
+        padding: 1.5rem;
+        margin: 20% auto;
+    }
+
+    #foto-actual {
+        max-height: 300px;
     }
 }
 
@@ -733,18 +855,6 @@ section {
         padding: 0.5rem 0;
     }
 
-    .logo h1 {
-        font-size: 1rem;
-    }
-
-    .hero-content h2 {
-        font-size: 1.5rem;
-    }
-
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-
     .section-title {
         font-size: 1.5rem;
     }
@@ -752,6 +862,10 @@ section {
     .cta-button {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
+    }
+
+    .servicios-grid {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
     }
 
     .servicio-card,
@@ -764,139 +878,9 @@ section {
         padding: 2rem 0;
     }
 }
-   .logo-img{
-       height:80px;
-       width:auto;
-       display:block;
-}
 
-/* ============================================
-   HERO - FONDO FOTO
-   ============================================ */
-
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/fondo-hero.jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-}
-
-/* ============================================
-   ANTES / DESPUÉS
-   ============================================ */
-
-.antes-despues-item {
-    margin-bottom: 3rem;
-}
-
-.antes-despues-fotos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    border-radius: 10px;
-    overflow: hidden;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.foto-lado {
-    position: relative;
-    height: 240px;
-    overflow: hidden;
-}
-
-.foto-lado img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-.foto-lado .label {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-weight: bold;
-    color: white;
-    background-color: rgba(0,0,0,0.7);
-    padding: 0.4rem 0.9rem;
-    border-radius: 5px;
-    font-size: 0.9rem;
-}
-
-/* ============================================
-   VÍDEOS MP4
-   ============================================ */
-
-.subtitulo-galeria {
-    text-align: center;
-    color: var(--accent-color);
-    font-size: 1.4rem;
-    margin: 2.5rem 0 1.5rem;
-}
-
-.proceso-trabajo {
-    background-color: var(--secondary-color);
-}
-
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.video-item {
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    overflow: hidden;
-    border: 2px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.video-item:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-}
-
-.video-item video {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-}
-
-/* ============================================
-   INSTAGRAM AL FINAL
-   ============================================ */
-
-.video-instagram-section {
-    background-color: var(--secondary-color);
-    padding: 4rem 0;
-}
-
-.video-instagram-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-@media (max-width: 768px) {
-    .foto-lado {
-        height: 120px;
-    }
-
-    .videos-grid {
+@media (max-width: 460px) {
+    .servicios-grid {
         grid-template-columns: 1fr;
-    }
-
-    .video-item video {
-        height: 200px;
     }
 }
