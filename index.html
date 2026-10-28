@@ -18,6 +18,7 @@
     <meta property="og:locale" content="es_ES">
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="coche.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Estilos de la nueva sección de preguntas frecuentes -->
@@ -72,6 +73,20 @@
     </script>
 </head>
 <body>
+    <!-- Coche de fondo: aparece al terminar la portada y se desmonta al bajar -->
+    <div class="car-bg" aria-hidden="true">
+        <div class="car-stage">
+            <img class="car-part" data-part="base"    src="images/coche-base.webp"    alt="" style="left:0%;top:0%;width:100%">
+            <img class="car-part" data-part="front"   src="images/coche-front.webp"   alt="" style="left:0.531%;top:24.655%;width:39.532%">
+            <img class="car-part" data-part="door1"   src="images/coche-door1.webp"   alt="" style="left:37.938%;top:21.696%;width:26.355%">
+            <img class="car-part" data-part="door2"   src="images/coche-door2.webp"   alt="" style="left:64.081%;top:18.738%;width:22.742%">
+            <img class="car-part" data-part="rear"    src="images/coche-rear.webp"    alt="" style="left:78.108%;top:15.582%;width:21.36%">
+            <img class="car-part" data-part="roof"    src="images/coche-roof.webp"    alt="" style="left:23.804%;top:0.986%;width:64.187%">
+            <img class="car-part" data-part="wheel_f" src="images/coche-wheel_f.webp" alt="" style="left:19.235%;top:67.258%;width:17.322%">
+            <img class="car-part" data-part="wheel_r" src="images/coche-wheel_r.webp" alt="" style="left:78.215%;top:51.479%;width:16.684%">
+        </div>
+    </div>
+
     <!-- Navegación -->
     <nav class="navbar">
         <div class="container">
@@ -375,5 +390,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="coche-scroll.js"></script>
 </body>
 </html>
