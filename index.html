@@ -6,21 +6,15 @@
     <title>Chapa y pintura en Berriainz, Pamplona | Chapistas Berriainz</title>
     <meta name="description" content="Taller de coches en Berriainz, cerca de Pamplona. Chapa y pintura, reparación de golpes y choques, pulido y cambio de color. Presupuesto: 948 07 30 82.">
     <meta name="robots" content="index, follow">
-    <!-- Cuando tengas dominio propio, cambia esta dirección (y las de abajo) por la nueva -->
     <link rel="canonical" href="https://chapistasberriainz-eng.github.io/chapistas-berriainz/">
-
-    <!-- Al compartir en WhatsApp, Facebook, etc. -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Chapa y pintura en Berriainz, Pamplona | Chapistas Berriainz">
     <meta property="og:description" content="Taller de coches: reparación de golpes y choques, chapa y pintura, pulido y cambio de color. Pide presupuesto sin compromiso.">
     <meta property="og:url" content="https://chapistasberriainz-eng.github.io/chapistas-berriainz/">
     <meta property="og:image" content="https://chapistasberriainz-eng.github.io/chapistas-berriainz/images/LOGO.jpg">
     <meta property="og:locale" content="es_ES">
-
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Estilos de la nueva sección de preguntas frecuentes -->
     <style>
         .faq { padding: 4rem 0; }
         .faq-list { max-width: 800px; margin: 0 auto; }
@@ -29,8 +23,6 @@
         .faq-list p { margin-top: 0.75rem; line-height: 1.6; }
         .info-box a, .info-box a:visited { color: inherit; }
     </style>
-
-    <!-- Datos estructurados para Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -72,19 +64,29 @@
     </script>
 </head>
 <body>
-    <!-- Navegación -->
+    <div class="scroll-car-scene" aria-hidden="true">
+        <div class="car-scene">
+            <div class="car-body">
+                <div class="car-window"></div>
+                <div class="car-light"></div>
+                <div class="wheel wheel-front"></div>
+                <div class="wheel wheel-back"></div>
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <div class="LOGO" style="margin-right: auto;">
                 <img src="images/LOGO.jpg" alt="Chapistas Berriainz" style="max-height: 70px; width: auto;">
-        </div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="hamburger" aria-label="Abrir menú" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -92,62 +94,57 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Taller de chapa y pintura en Berriainz, Pamplona</h1>
-            <p>Taller de coches especializado en chapa y pintura. Reparamos golpes, choques y accidentes con profesionalidad y calidad. Estamos en el Polígono Industrial de Berriainz (Berrioplano), a pocos minutos de Pamplona.</p>
+            <p>Taller de coches especializado en chapa y pintura. Reparamos golpes, choques y accidentes con profesionalidad y calidad. Estamos en el Polígono Industrial de Berriainz.</p>
             <a href="#contacto" class="cta-button">Solicitar presupuesto sin compromiso</a>
         </div>
     </section>
 
-    <!-- Servicios -->
     <section id="servicios" class="servicios">
         <div class="container">
             <h2 class="section-title">Nuestros Servicios de Chapa y Pintura</h2>
             <div class="servicios-grid">
-
-                <div class="servicio-card chapa">
-                     <i class="fas fa-hammer"></i>
+                <div class="servicio-card chapa" data-servicio="chapa" tabindex="0" role="button" aria-label="Ver trabajos de reparación de chapa">
+                    <i class="fas fa-hammer"></i>
                     <h3>Reparación de Chapa</h3>
-                    <p>Reparamos abolladuras, golpes, choques y deformaciones en la carrocería, desde un roce de aparcamiento hasta los daños de un accidente. Valoramos el desperfecto y te damos un presupuesto claro antes de empezar.</p>
+                    <p>Abolladuras y golpes.</p>
                 </div>
 
-                <div class="servicio-card pintura">
+                <div class="servicio-card pintura" data-servicio="pintura" tabindex="0" role="button" aria-label="Ver trabajos de pintura automotriz">
                     <i class="fas fa-paint-brush"></i>
                     <h3>Pintura Automotriz</h3>
-                    <p>Pintamos paneles sueltos o el vehículo completo con acabado profesional, igualando el color de tu coche para que la zona reparada no se note.</p>
+                    <p>Acabados profesionales.</p>
                 </div>
 
-                <div class="servicio-card pulido">
+                <div class="servicio-card pulido" data-servicio="pulido" tabindex="0" role="button" aria-label="Ver trabajos de pulido y abrillantado">
                     <i class="fas fa-sparkles"></i>
                     <h3>Pulido y Abrillantado</h3>
-                    <p>Recuperamos el brillo de la pintura apagada por el sol y el paso del tiempo, eliminando arañazos superficiales y marcas sin necesidad de repintar.</p>
+                    <p>Brillo y restauración.</p>
                 </div>
 
-                <div class="servicio-card superficies">
+                <div class="servicio-card express" data-servicio="express" tabindex="0" role="button" aria-label="Ver trabajos de servicio express">
                     <i class="fas fa-car"></i>
                     <h3>Servicio Express</h3>
-                    <p>Priorizamos tu vehículo y lo entregamos en el día. Consulta la disponibilidad llamando al 948 07 30 82 o por WhatsApp.</p>
+                    <p>Entrega rápida.</p>
                 </div>
 
-                <div class="servicio-card color">
+                <div class="servicio-card color" data-servicio="color" tabindex="0" role="button" aria-label="Ver trabajos de cambio de color">
                     <i class="fas fa-palette"></i>
                     <h3>Cambio de Color</h3>
-                    <p>Personalizamos y cambiamos el color de tu vehículo, con una preparación cuidadosa de la superficie para un resultado uniforme y duradero.</p>
+                    <p>Personalización completa.</p>
                 </div>
 
-                <div class="servicio-card mantenimiento">
+                <div class="servicio-card mantenimiento" data-servicio="mantenimiento" tabindex="0" role="button" aria-label="Ver trabajos de mantenimiento">
                     <i class="fas fa-tools"></i>
                     <h3>Mantenimiento</h3>
-                    <p>Te ayudamos a conservar la pintura en buen estado con revisión de pequeños daños, retoques y servicios de cuidado de la carrocería.</p>
+                    <p>Cuidados y retoques.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Proceso de Trabajo (Vídeos) -->
     <section id="proceso" class="proceso-trabajo">
         <div class="container">
             <h2 class="section-title">Cómo Trabajamos</h2>
@@ -175,13 +172,11 @@
         </div>
     </section>
 
-    <!-- Galería -->
-    <section id="galeria" class="galeria">
+    <section id="galeria" class="galeria hidden-gallery">
         <div class="container">
             <h2 class="section-title">Galería de Trabajos</h2>
             <p class="section-subtitle">Antes y Después de nuestras intervenciones</p>
 
-            <!-- Antes/Después 1 -->
             <div class="antes-despues-item">
                 <div class="antes-despues-fotos">
                     <div class="foto-lado">
@@ -196,7 +191,6 @@
                 <p class="trabajo-titulo">Reparación de Chapa y Pintura</p>
             </div>
 
-            <!-- Antes/Después 2 -->
             <div class="antes-despues-item">
                 <div class="antes-despues-fotos">
                     <div class="foto-lado">
@@ -210,11 +204,9 @@
                 </div>
                 <p class="trabajo-titulo">Cambio de Color</p>
             </div>
-
         </div>
     </section>
 
-    <!-- Preguntas frecuentes -->
     <section id="faq" class="faq">
         <div class="container">
             <h2 class="section-title">Preguntas Frecuentes</h2>
@@ -225,7 +217,7 @@
                 </details>
                 <details>
                     <summary>¿Qué hago si he tenido un golpe o un choque con mi coche?</summary>
-                    <p>Si el coche puede circular con seguridad, tráelo al taller o envíanos fotos del daño por WhatsApp al 636 69 38 93 y te decimos qué hay que reparar y cuánto costaría. Si no puede circular o hay heridos, llama primero al 112.</p>
+                    <p>Si el coche puede circular con seguridad, tráelo al taller o envíanos fotos del daño por WhatsApp al 636 69 38 93 y te decimos qué hay que reparar y cuánto costaría.</p>
                 </details>
                 <details>
                     <summary>¿Cuánto tarda la reparación?</summary>
@@ -233,7 +225,6 @@
                 </details>
                 <details>
                     <summary>¿Puedo tramitar la reparación con mi seguro?</summary>
-                    <!-- REVISA: ajusta esta respuesta a cómo trabajáis realmente con las aseguradoras -->
                     <p>Consúltanos tu caso por teléfono o WhatsApp y te explicamos las opciones.</p>
                 </details>
                 <details>
@@ -248,7 +239,6 @@
         </div>
     </section>
 
-    <!-- Información de la Empresa -->
     <section class="info-empresa">
         <div class="container">
             <div class="info-grid">
@@ -274,15 +264,13 @@
         </div>
     </section>
 
-    <!-- Mapa -->
     <section class="mapa">
         <div class="container">
             <h2 class="section-title">Encuéntranos</h2>
-            <iframe title="Mapa de la ubicación de Chapistas Berriainz" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.1234567890!2d-1.695!3d42.826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd508d5fd0e20add%3A0xf5a30896aea4f579!2sPolígono%20Industrial%20de%20Berriainz!5e0!3m2!1ses!2ses!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe title="Mapa de la ubicación de Chapistas Berriainz" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.1234567890!2d-1.695!3d42.826!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDU0JzAxLjEiTiAxwrAxNTgnMjAuOSJX!5e0!3m2!1ses!2ses!4v1670000000000!5m2!1ses!2ses" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
-    <!-- Formulario de Contacto -->
     <section id="contacto" class="contacto">
         <div class="container">
             <h2 class="section-title">Solicitar Presupuesto</h2>
@@ -312,7 +300,8 @@
                             <option value="Pintura Automotriz">Pintura Automotriz</option>
                             <option value="Pulido y Abrillantado">Pulido y Abrillantado</option>
                             <option value="Cambio de Color">Cambio de Color</option>
-                            <option value="Restauración Completa">Restauración Completa</option>
+                            <option value="Servicio Express">Servicio Express</option>
+                            <option value="Mantenimiento">Mantenimiento</option>
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
@@ -351,28 +340,25 @@
         </div>
     </section>
 
-    <!-- Vídeo Instagram al final -->
-    <section class="video-instagram-section">
-        <div class="container">
-            <h2 class="section-title">Síguenos en Instagram</h2>
-            <div class="video-instagram-wrapper">
-                <blockquote class="instagram-media"
-                    data-instgrm-permalink="https://www.instagram.com/chapistasberriainz/"
-                    data-instgrm-version="14"
-                    style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0 auto; max-width:540px; padding:0; width:100%;">
-                </blockquote>
-                <script async src="//www.instagram.com/embed.js"></script>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Chapistas Berriainz. Todos los derechos reservados.</p>
             <p>Polígono Industrial de Berriainz, Calle E, nave 157 | Berrioplano, Navarra</p>
         </div>
     </footer>
+
+    <div id="modal-galeria" class="modal-galeria" aria-modal="true" role="dialog">
+        <div class="modal-galeria-content">
+            <button class="cerrar-galeria" type="button" aria-label="Cerrar galería">×</button>
+            <h3 id="modal-titulo-servicio">Servicio</h3>
+            <div class="galeria-fotos-servicio">
+                <button class="nav-foto prev-foto" type="button" aria-label="Foto anterior">‹</button>
+                <img id="foto-actual" src="" alt="Trabajo del servicio">
+                <button class="nav-foto next-foto" type="button" aria-label="Foto siguiente">›</button>
+            </div>
+            <p id="contador-fotos" class="foto-contador-servicio">1 / 2</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
